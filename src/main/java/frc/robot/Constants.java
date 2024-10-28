@@ -25,6 +25,12 @@ import edu.wpi.first.math.util.Units;
  */
 public final class Constants {
   public static final class DriveConstants {
+    public static double frontLeft = 0;
+    public static double frontRight = 0;
+    public static double backLeft = 0;
+    public static double backRight = 0;
+
+
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
     public static final double kMaxSpeedMetersPerSecond = 4.8;
@@ -35,9 +41,9 @@ public final class Constants {
     public static final double kRotationalSlewRate = 2.0; // percent per second (1 = 100%)
 
     // Chassis configuration
-    public static final double kTrackWidth = Units.inchesToMeters(26.5);
+    public static final double kTrackWidth = Units.inchesToMeters(24.5);
     // Distance between centers of right and left wheels on robot
-    public static final double kWheelBase = Units.inchesToMeters(26.5);
+    public static final double kWheelBase = Units.inchesToMeters(24.5);
     // Distance between front and back wheels on robot
     public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
         new Translation2d(kWheelBase / 2, kTrackWidth / 2),
@@ -46,10 +52,10 @@ public final class Constants {
         new Translation2d(-kWheelBase / 2, -kTrackWidth / 2));
 
     // Angular offsets of the modules relative to the chassis in radians
-    public static final double kFrontLeftChassisAngularOffset = -Math.PI / 2;
-    public static final double kFrontRightChassisAngularOffset = 0;
-    public static final double kBackLeftChassisAngularOffset = Math.PI;
-    public static final double kBackRightChassisAngularOffset = Math.PI / 2;
+    public static final double kFrontLeftChassisAngularOffset = -Math.PI / 2 + frontLeft;
+    public static final double kFrontRightChassisAngularOffset = 0 + frontRight;
+    public static final double kBackLeftChassisAngularOffset = Math.PI + backLeft - 0.0125;
+    public static final double kBackRightChassisAngularOffset = Math.PI / 2 + backRight - 0.0125;
 
     // SPARK MAX CAN IDs
     public static final int kFrontLeftDrivingCanId = 11;
@@ -139,4 +145,11 @@ public final class Constants {
   public static final class NeoMotorConstants {
     public static final double kFreeSpeedRpm = 5676;
   }
+
+  // public static final class CameraConstants {
+  //   public static final String fCameraName = "";
+  //   public static final Pose2d fCameraOffset = new Pose2d(0.325, 0, 0);
+  //   public static final PhotonCamera fCamera = new PhotonCamera(fCameraName);
+  // }
+
 }
